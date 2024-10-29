@@ -4,6 +4,7 @@ const Footer = () => {
         <footer className="footer">
           <div className="container">
             <p>&copy; 2024 SheyRooms Hotel Pvt Ltd. All Rights Reserved.</p>
+{/*                */}
             <p>
               <a href="mailto:info@company.com">info@sheyrooms.com</a> | 
               <a href="https://www.company.com" target="_blank" rel="noreferrer"> www.sheyrooms.com</a>

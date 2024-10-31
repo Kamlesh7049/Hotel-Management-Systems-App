@@ -1,22 +1,49 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';1
+import Table from 'react-bootstrap/Table';
 
-const Display = () => {
-  const [bookings, setBookings] = useState([]);
+const Display=()=>{
+  const[mydata,setMydata]=useState([]);
+  const loadData=async()=>{
+    let api = "http://localhost:9000/users/userdisplay";
+    try{
+      const response=await axios.get(api);
+      setMydata(response.data);
 
-  useEffect(() => {
-    // Load bookings from local storage
-    const storedBookings = JSON.parse(localStorage.getItem('bookings')) || [];
-    setBookings(storedBookings);
-  }, []);
-
+    }
+    catch(error){
+      console.log(error)
+      alert(error.response.data)
+    }
+  }
+  useEffect(()=>{
+    loadData();
+  },[]);
+ 
+  
+  const ans=mydata.map((key)=>{
+    return(
+    <>
+      <tr>
+                
+                <td>{key.name}</td>
+                <td>{key.email}</td>
+                <td>{key.mobile}</td>
+                <td>{key.roomType}</td>
+                <td>{key.checkIn}</td>
+                <td>{key.checkOut}</td>
+                <td>{key.message}</td>
+      </tr>
+                
+    </>
+    )
+  })
   return (
-    <section id="display">
-      <h2>Booking List</h2>
-      {bookings.length === 0 ? (
-        <h4 style={{marginTop : "20px"}}>No bookings available.</h4>
-      ) : (
-        <table>
-          <thead>
+    <>
+    <center>
+    <h4 style={{marginTop : "60px"}}>Booking List</h4>
+    <Table responsive="sm">
+    <thead>
             <tr>
               <th>Name</th>
               <th>Email</th>
@@ -26,23 +53,16 @@ const Display = () => {
               <th>Check-Out</th>
               <th>Message</th>
             </tr>
+            {ans}
           </thead>
-          <tbody>
-            {bookings.map((booking, index) => (
-              <tr key={index}>
-                <td>{booking.name}</td>
-                <td>{booking.email}</td>
-                <td>{booking.mobile}</td>
-                <td>{booking.roomType}</td>
-                <td>{booking.checkIn}</td>
-                <td>{booking.checkOut}</td>
-                <td>{booking.message}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
-    </section>
+
+     </Table> 
+    
+   
+    </center>
+    
+    </>
+   
   );
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import pic1 from '../images/pic1.jfif'; // Adjust the path as needed
+import pic1 from '../images/pic1.jfif'; 
 import pic2 from '../images/pic2.jfif';
 import pic3 from '../images/pic3.jfif';
 // import './Service.css'; // Uncomment if you have a CSS file for styles

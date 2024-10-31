@@ -6,6 +6,8 @@ import BookNow from "./pages/BookNow";
 import Display from "./pages/Display";
 import Update from "./pages/Update";
 import Contact from "./pages/Contact";
+import SearchByName from "./pages/SearchByName";
+import EditData from "./pages/EditData";
 
 
 
@@ -22,7 +24,10 @@ const App = () => {
           <Route path="booknow" element={<BookNow/>}/>
           <Route path="display" element={<Display/>}/>
           <Route path="update" element={<Update/>}/>
+          <Route path="editdata" element={<EditData/>}/>
           <Route path="contactus" element={<Contact/>}/>
+          <Route path="search" element={<SearchByName/>}/>
+
         </Route>
       </Routes>
     </BrowserRouter>

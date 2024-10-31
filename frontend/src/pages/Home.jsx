@@ -2,7 +2,7 @@ import Carousel from "react-bootstrap/Carousel";
 import { Link } from "react-router-dom";
 import A from "../images/img1.jpg";
 import B from "../images/img2.jpg";
-import C from "../images/img3.jfif";
+import C from "../images/bg2.jpg";
 
 const Home = () => {
   return (

@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
@@ -21,6 +22,15 @@ const Header = () => {
             <Nav.Link as={Link} to="/contactus">Contact Us</Nav.Link>
           </Nav>
           <Nav className="ms-auto">
+            <Form className="d-flex me-2">
+              <Form.Control
+                type="search"
+                placeholder="Search"
+                className="me-2"
+                aria-label="Search"
+              />
+              {/* <Button variant="outline-light" type="submit">Search</Button> */}
+            </Form>
             <Button variant="outline-light" href="#login" className="me-2">Login</Button>
             <Button variant="outline-light" href="#signup">Signup</Button>
           </Nav>

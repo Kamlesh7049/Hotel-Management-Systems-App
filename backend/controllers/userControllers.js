@@ -35,8 +35,47 @@ const userDataDisplay=async(req,res)=>{
     }
 }
 
+ const userUpdateDisplay=async(req,res)=>{
+    const Data=await userModel.find();
+    // res.send("Update Data!!")
+    res.send(Data);
+ }
+
+  const userDataDelete=async(req,res)=>{
+    const myid=req.body.id;
+    const userdata=await userModel.findByIdAndDelete(myid);
+    console.log("okkk!")
+    res.send("record deleted!!!")
+  }
+
+  const userEditData=async(req,res)=>{
+    const id=req.body.id;
+    const Udata=await userModel.findById(id);
+    res.send(Udata);
+  }
+
+  const userEditSave=async(req,res)=>{
+    const {_id,name,email,mobile,roomType,checkIn,checkOut,message}=req.body;
+    const userdata=await userModel.findByIdAndUpdate(_id,{
+     
+    name:name,
+    email:email,
+    mobile:mobile,
+    roomType:roomType,
+    checkIn:checkIn,
+    checkOut:checkOut,
+    message:message
+
+    })
+    res.send("Data Succefully Updated!!")
+ 
+  }
 
 module.exports={
     userDataSave,
-    userDataDisplay
+    userDataDisplay,
+    userUpdateDisplay,
+    userDataDelete,
+    userEditData,
+    userEditSave
 }

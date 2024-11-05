@@ -24,7 +24,7 @@ const App = () => {
           <Route path="booknow" element={<BookNow/>}/>
           <Route path="display" element={<Display/>}/>
           <Route path="update" element={<Update/>}/>
-          <Route path="editdata" element={<EditData/>}/>
+          <Route path="update/editdata/:id" element={<EditData/>}/>
           <Route path="contactus" element={<Contact/>}/>
           <Route path="search" element={<SearchByName/>}/>
 

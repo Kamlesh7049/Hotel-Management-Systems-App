@@ -1,6 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import A from "../images/edit.png";
+import B from "../images/delete.png";
+import Table from 'react-bootstrap/Table';
+
 
 
 
@@ -45,7 +49,12 @@ const ans=mydata.map((key)=>(
       <td>{key.checkOut}</td>
       <td>{key.message}</td>
       <td>
-
+        <a href="#" onClick={()=>{myrecEdit(key._id)}} style={{marginRight:"10px"}}>
+          <img src={A} width="20" height="20" alt="Edit" />
+        </a>
+       <a href="#" onClick={()=>{myrecDel(key._id)}}>
+        <img src={B} width="20" height="20"  alt="" />
+       </a>
       </td>
     </tr>
   </>
@@ -53,7 +62,24 @@ const ans=mydata.map((key)=>(
 
   return (
    <>
-   <h4> Update User Records </h4>
+   <center>
+   <h4 style={{marginTop : "60px"}}> Update User Records </h4>
+   <Table responsive="sm">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Room Type</th>
+            <th>Check In</th>
+            <th>Check Out</th>
+            <th>Message</th>
+            <th>Actions</th>
+          </tr>
+          {ans}
+          </thead>
+          </Table>
+      </center>
    </>
   );
 };

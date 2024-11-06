@@ -41,8 +41,14 @@ const Display=()=>{
   return (
     <>
     <center>
-    <h4 style={{marginTop : "60px"}}>Booking List</h4>
-    <Table responsive="sm">
+    <h4 style={{marginTop : "70px"}}>Booking List</h4><br />
+    <Table responsive="sm"
+     style={{
+      width: "80%",
+      margin: "0 auto",
+      borderCollapse: "collapse",
+      boxShadow: "0px 0px 10px rgba(0,0,0,0.1)",
+    }}>
     <thead>
             <tr>
               <th>Name</th>

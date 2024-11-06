@@ -27,7 +27,7 @@ catch(error){
 const userDataDisplay=async(req,res)=>{
     try{
         const userdata=await userModel.find();
-        console.log("Data Successfully Display!!")
+        // console.log("Data Successfully Display!!")
         res.status(200).json(userdata)
     }
     catch(error){
@@ -71,11 +71,19 @@ const userDataDisplay=async(req,res)=>{
  
   }
 
+  const userSearchByName=async(req,res)=>{
+    let uname=req.query.name;
+    console.log(req.query.name);
+    const docs=await userModel.find({name:{$regex:uname}});
+    res.send(docs);
+  }
+
 module.exports={
     userDataSave,
     userDataDisplay,
     userUpdateDisplay,
     userDataDelete,
     userEditData,
-    userEditSave
+    userEditSave,
+    userSearchByName
 }

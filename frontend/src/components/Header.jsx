@@ -1,12 +1,21 @@
-import React from 'react';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
 
-const Header = () => {
+const Header = ({ onSearch }) => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const navigate = useNavigate();
+
+  const handleSearchChange = (e) => {
+    const term = e.target.value;
+    setSearchTerm(term);
+    
+    // Trigger search and navigate to search page
+    if (term.trim() !== "") {
+      navigate(`/search?name=${term}`);
+    }
+  };
+
   return (
     <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
       <Container>
@@ -21,23 +30,21 @@ const Header = () => {
             <Nav.Link as={Link} to="/update">Update</Nav.Link>
             <Nav.Link as={Link} to="/contactus">Contact Us</Nav.Link>
           </Nav>
-          <Nav className="ms-auto">
-            <Form className="d-flex me-2">
-              <Form.Control
-                type="search"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
-              />
-              {/* <Button variant="outline-light" type="submit">Search</Button> */}
-            </Form>
-            <Button variant="outline-light" href="#login" className="me-2">Login</Button>
-            <Button variant="outline-light" href="#signup">Signup</Button>
-          </Nav>
+
+          {/* Search input triggers search automatically on change */}
+          <div className="nav-search">
+            <input
+              type="text"
+              value={searchTerm}
+              onChange={handleSearchChange}
+              placeholder="Search"
+              className="me-2"
+            />
+          </div>
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
-}
+};
 
 export default Header;
